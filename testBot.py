@@ -18,6 +18,7 @@ async def on_message(message):
     if message.content.startswith('!help'):
         #Print out the possible commands for the bot
         await client.send_message(message.channel, '\n'.join(messages.Help))
+        print('help requested')
     
     elif message.content.startswith('!test'):
         await client.send_message(message.channel, messages.Test)
