@@ -43,4 +43,4 @@ async def on_message(message):
 #client.run(secret.Token)
 
 #Run on Heroku. Defined under Settings->Config Vars
-client.run(SLACK_BOT_TOKEN)
+client.run(process.env.BOT_TOKEN)
