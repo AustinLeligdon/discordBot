@@ -39,4 +39,8 @@ async def on_message(message):
 
         await client.send_message(message.channel, time)
 
-client.run(secret.Token)
+#Run locally
+#client.run(secret.Token)
+
+#Run on Heroku. Defined under Settings->Config Vars
+client.run(SLACK_BOT_TOKEN)
