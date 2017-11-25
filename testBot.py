@@ -2,7 +2,7 @@ import discord
 import asyncio
 from datetime import datetime
 import messages
-# from boto.s3.connection import S3Connection
+import os
 #To get local token
 #import secret
 
@@ -45,4 +45,4 @@ async def on_message(message):
 #client.run(secret.Token)
 
 #Run on Heroku. Defined under Settings->Config Vars
-client.run(os.environ['BOT_TOKEN'])
+client.run(os.environ.get('BOT_TOKEN', None))
