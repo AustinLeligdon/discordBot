@@ -11,5 +11,6 @@ secret.py   - holds the token variable
 ```
 python 3.6
 discord.py
+Heroku
 datetime
 ```
