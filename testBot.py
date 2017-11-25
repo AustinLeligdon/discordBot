@@ -45,4 +45,4 @@ async def on_message(message):
 #client.run(secret.Token)
 
 #Run on Heroku. Defined under Settings->Config Vars
-client.run(env('BOT_TOKEN')
+client.run(os.environ['BOT_TOKEN'])
