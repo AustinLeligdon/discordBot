@@ -1,1 +1,5 @@
+# File to store bot token in when running locally
 secret.py
+
+# Python builds on local
+__pycache__/

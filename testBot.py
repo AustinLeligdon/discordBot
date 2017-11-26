@@ -5,6 +5,7 @@ import messages
 from os import environ
 #To get local token
 #import secret
+import requests
 
 client = discord.Client()
 
@@ -21,11 +22,12 @@ async def on_ready():
 async def on_message(message):
 #!cat -send a random image of a cat
     if message.content.startswith('!cat'):
-        #link# http://thecatapi.com/api/images/get
-        #test link# http://random.cat/i/1219.jpg
-        embed = discord.Embed(title="Enjoy the kitty", color=0x00ff00)
-        embed.set_image('fb2.jpg')
-        await client.send_message(message.channel, embed=embed)
+        response = requests.get('http://thecatapi.com/api/images/get', stream=True)
+        with open ('cat.png', 'wb') as f:
+            f.write(response.raw.read())
+        with open('cat.png', 'rb') as f:
+            await client.send_file(message.channel, f, filename='cat.png', content='Please, enjoy this cat.')
+
 
 #!countdown -Print how many days are left until HackISU 2018
     if message.content.startswith('!countdown'):
