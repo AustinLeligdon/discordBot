@@ -23,7 +23,7 @@ async def on_message(message):
     if message.content.startswith('!cat'):
         embed = discord.Embed(title="Enjoy the kitty", color=0x00ff00)
         #link# http://thecatapi.com/api/images/get
-        embed.set_image(*, 'http://random.cat/i/1219.jpg')
+        embed.set_image('*', 'http://random.cat/i/1219.jpg')
 
         await client.send_message(message.channel, embed=embed)
 
