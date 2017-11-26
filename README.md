@@ -3,6 +3,7 @@ Testing out making a discord bot
 
 ### structure
 ```
+testBot.py  - bot logic
 messages.py - holds string variables for the bot
 secret.py   - holds the token variable
 ```

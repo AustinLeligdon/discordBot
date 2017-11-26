@@ -19,6 +19,14 @@ async def on_ready():
 #When a user sends a message in the channel
 @client.event
 async def on_message(message):
+#!cat -send a random image of a cat
+    if message.content.startswith('!cat'):
+        embed = discord.Embed(title="Kitty", description="Enjoy the cat", color=0x00ff00)
+        embed.set_image('http://random.cat/i/1219.jpg')
+        embed.add_field(name="Field", value="hello", inline=False)
+
+        await client.send_message(message.channel, embed=embed)
+
 #!countdown -Print how many days are left until HackISU 2018
     if message.content.startswith('!countdown'):
         #Get the times and compute the difference
