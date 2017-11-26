@@ -23,11 +23,9 @@ async def on_message(message):
     if message.content.startswith('!cat'):
         #link# http://thecatapi.com/api/images/get
         #test link# http://random.cat/i/1219.jpg
-        # embed.set_image('*', 'http://random.cat/i/1219.jpg')
-        # embed = discord.Embed(title="Enjoy the kitty", color=0x00ff00)
-        #await client.send_message(message.channel, embed=embed)
-
-        await client.send_file(messsage.channel, 'http://random.cat/i/1219.jpg')
+        embed = discord.Embed(title="Enjoy the kitty", color=0x00ff00)
+        embed.set_image('fb2.jpg')
+        await client.send_message(message.channel, embed=embed)
 
 #!countdown -Print how many days are left until HackISU 2018
     if message.content.startswith('!countdown'):
