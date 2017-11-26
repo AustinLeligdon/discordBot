@@ -22,7 +22,8 @@ async def on_message(message):
 #!cat -send a random image of a cat
     if message.content.startswith('!cat'):
         embed = discord.Embed(title="Kitty", description="Enjoy the cat", color=0x00ff00)
-        embed.set_image('http://random.cat/i/1219.jpg')
+        #link# http://thecatapi.com/api/images/get
+        #testimage# embed.set_image('http://random.cat/i/1219.jpg')
         embed.add_field(name="Field", value="hello", inline=False)
 
         await client.send_message(message.channel, embed=embed)
