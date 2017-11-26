@@ -21,11 +21,13 @@ async def on_ready():
 async def on_message(message):
 #!cat -send a random image of a cat
     if message.content.startswith('!cat'):
-        embed = discord.Embed(title="Enjoy the kitty", color=0x00ff00)
         #link# http://thecatapi.com/api/images/get
-        embed.set_image('*', 'http://random.cat/i/1219.jpg')
+        #test link# http://random.cat/i/1219.jpg
+        # embed.set_image('*', 'http://random.cat/i/1219.jpg')
+        # embed = discord.Embed(title="Enjoy the kitty", color=0x00ff00)
+        #await client.send_message(message.channel, embed=embed)
 
-        await client.send_message(message.channel, embed=embed)
+        await client.send_file(messsage.channel, 'http://random.cat/i/1219.jpg')
 
 #!countdown -Print how many days are left until HackISU 2018
     if message.content.startswith('!countdown'):
