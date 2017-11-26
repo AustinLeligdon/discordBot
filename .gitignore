@@ -3,3 +3,4 @@ secret.py
 
 # Python builds on local
 __pycache__/
+*.pyc
