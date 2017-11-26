@@ -1,11 +1,11 @@
 #file of message variables
 Help = 'Welcome to the Discord Bot. List of commands: \n'\
-    '!cat        -conjure a random picture of a cat \n'\
+    '!cat  -conjure a random picture of a cat \n'\
     '!countdown  -time left until the next hackathon \n'\
-    '!help       -display the help command \n'\
-    '!info       -display the info for HackISU \n'\
-    '!social     -HackISU\'s social media accounts \n'\
-    '!test       -a test command for the bot '
+    '!help  -display the help command \n'\
+    '!info  -display the info for HackISU \n'\
+    '!social  -HackISU\'s social media accounts \n'\
+    '!test  -a test command for the bot '
 
 Test = 'Test message'
 
