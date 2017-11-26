@@ -21,10 +21,9 @@ async def on_ready():
 async def on_message(message):
 #!cat -send a random image of a cat
     if message.content.startswith('!cat'):
-        embed = discord.Embed(title="Kitty", description="Enjoy the cat", color=0x00ff00)
+        embed = discord.Embed(title="Enjoy the kitty", color=0x00ff00)
         #link# http://thecatapi.com/api/images/get
-        #testimage# embed.set_image('http://random.cat/i/1219.jpg')
-        embed.add_field(name="Field", value="hello", inline=False)
+        embed.set_image(*, 'http://random.cat/i/1219.jpg')
 
         await client.send_message(message.channel, embed=embed)
 
@@ -32,7 +31,7 @@ async def on_message(message):
     if message.content.startswith('!countdown'):
         #Get the times and compute the difference
         now = datetime.today()
-        hackerTime = datetime(2018, 3, 23, 17)
+        hackerTime = datetime(2017, 12, 25, 17) #2018, 3, 23, 17)
         diff = hackerTime - now
         testMessage = ''
 
