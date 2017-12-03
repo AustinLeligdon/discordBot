@@ -22,12 +22,11 @@ async def on_ready():
 async def on_message(message):
 #!cat -send a random image of a cat
     if message.content.startswith('!cat'):
-        response = requests.get('http://thecatapi.com/api/images/get', stream=True)
-        with open ('cat.png', 'wb') as f:
-            f.write(response.raw.read())
-        with open('cat.png', 'rb') as f:
-            await client.send_file(message.channel, f, filename='cat.png', content='Please, enjoy this cat.')
-
+        async with aiohttp.get('http://thecatapi.com/api/images/get', stream=True) as response:
+            with open ('cat.png', 'wb') as f:
+                f.write(response.raw.read())
+            with open('cat.png', 'rb') as f:
+                await client.send_file(message.channel, f, filename='cat.png', content='Please, enjoy this cat.')
 
 #!countdown -Print how many days are left until HackISU 2018
     if message.content.startswith('!countdown'):
@@ -40,13 +39,13 @@ async def on_message(message):
         #Print hours to go if it's the same day
         if(diff.days == 0):
             hours = divmod(diff.seconds, 3600)[0]
-            timeMessage = 'There are {} hours until HackISU 2018!'.format(hours)
+            timeMessage = 'There are {} hours until Christmas!'.format(hours)
         #IF the event has passed
         elif(diff.days < 0):
             timeMessage = 'It\'s happening!'
         #Print number of days to go if appropriate
         else:
-            timeMessage = 'There are {} days until HackISU 2018!'.format(diff.days)
+            timeMessage = 'There are {} days until Christmas!'.format(diff.days)
 
         #send the message to the channel
         await client.send_message(message.channel, timeMessage)
