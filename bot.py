@@ -5,7 +5,6 @@ import messages
 from os import environ
 #To get local token
 #import secret
-import requests
 
 client = discord.Client()
 
