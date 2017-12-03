@@ -5,7 +5,7 @@ import messages
 from os import environ
 import requests
 #To get local token
-import secret
+#import secret
 
 client = discord.Client()
 
@@ -68,7 +68,7 @@ async def on_message(message):
         await client.send_message(message.channel, messages.Test)
 
 #Run locally
-client.run(secret.Token)
+#client.run(secret.Token)
 
 #Run on Heroku. Defined under Settings->Config Vars
-#client.run(environ.get('BOT_TOKEN'))
+client.run(environ.get('BOT_TOKEN'))
