@@ -3,8 +3,9 @@ import asyncio
 from datetime import datetime
 import messages
 from os import environ
+import requests
 #To get local token
-#import secret
+import secret
 
 client = discord.Client()
 
@@ -21,11 +22,12 @@ async def on_ready():
 async def on_message(message):
 #!cat -send a random image of a cat
     if message.content.startswith('!cat'):
-        async with aiohttp.get('http://thecatapi.com/api/images/get', stream=True) as response:
-            with open ('cat.png', 'wb') as f:
-                f.write(response.raw.read())
-            with open('cat.png', 'rb') as f:
-                await client.send_file(message.channel, f, filename='cat.png', content='Please, enjoy this cat.')
+        response = requests.get('http://thecatapi.com/api/images/get', stream=True)
+        with open ('cat.png', 'wb') as f:
+            f.write(response.raw.read())
+        with open('cat.png', 'rb') as f:
+            await client.send_file(message.channel, f, filename='cat.png', content='Please, enjoy this cat.')
+
 
 #!countdown -Print how many days are left until HackISU 2018
     if message.content.startswith('!countdown'):
@@ -66,7 +68,7 @@ async def on_message(message):
         await client.send_message(message.channel, messages.Test)
 
 #Run locally
-#client.run(secret.Token)
+client.run(secret.Token)
 
 #Run on Heroku. Defined under Settings->Config Vars
-client.run(environ.get('BOT_TOKEN'))
+#client.run(environ.get('BOT_TOKEN'))
