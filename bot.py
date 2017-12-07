@@ -53,15 +53,21 @@ async def on_message(message):
 
 #!help -Print out the possible commands for the bot
     elif message.content.startswith('!help'):
-        await client.send_message(message.channel, messages.Help)
+        embed=discord.Embed(color=0x008000)
+        embed.add_field(name='Welcome to the Discord Bot. List of commands:', value=messages.Help, inline=False)
+        await client.send_message(message.channel, embed=embed)
 
 #!info -Display the info for HackISU
     elif message.content.startswith('!info'):
-        await client.send_message(message.channel, messages.Info)
+        embed=discord.Embed(color=0x008000)
+        embed.add_field(name='HackISU Spring 2018 Info', value=messages.Info, inline=False)
+        await client.send_message(message.channel, embed=embed)
 
 #!social -Display the links for HackISU's social media platforms
     elif message.content.startswith('!social'):
-        await client.send_message(message.channel, messages.Social)
+        embed=discord.Embed(color=0x008000)
+        embed.add_field(name='Social Media Links', value=messages.Social, inline=False)
+        await client.send_message(message.channel, embed=embed)
     
 #!test -A test command for the bot
     elif message.content.startswith('!test'):
