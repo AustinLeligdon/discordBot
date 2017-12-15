@@ -15,6 +15,5 @@ Testing out making a discord bot for HackISU 2018. After adding features and tes
 ### built with
 * python 3.6
 * discord.py
-* Heroku
 * datetime
 * thecatapi.com

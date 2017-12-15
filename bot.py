@@ -9,6 +9,31 @@ import requests
 
 client = discord.Client()
 
+#background task
+async def background_announcments():
+    await client.wait_until_ready()
+    announcements = []
+    announced = []
+    announcements.append(datetime(2017, 12, 15, 4, 30)) #14th, 10:30pm
+    announcements.append(datetime(2017, 12, 15, 4)) #14th, 10pm
+    announcements.append(datetime(2017, 12, 15, 3, 30)) #14th, 9:30pm
+    channel = discord.Object(id='390725705207513088') #announcment channel id
+    
+    while not client.is_closed:
+        checker = datetime.utcnow()
+        for announce in announcements:
+            datePassed = announce < checker #true if the time has passed
+            if(datePassed):
+                #this announcement is the last one to occur
+                #announce it if it has not been yet
+                if(announce not in announced):
+                    message = 'Announcement: sent after {} time in utc!'.format(announce)
+                    await client.send_message(channel, message)
+                    announced.append(announce)
+                break
+        await asyncio.sleep(1800) #check every 30 minutes
+        
+
 #Log the bot into the Discord channel. On success the bot will show as online
 @client.event
 async def on_ready():
@@ -32,8 +57,8 @@ async def on_message(message):
 #!countdown -Print how many days are left until HackISU 2018
     if message.content.startswith('!countdown'):
         #Get the times and compute the difference
-        now = datetime.today()
-        hackerTime = datetime(2017, 12, 25, 17) #2018, 3, 23, 17)
+        now = datetime.utcnow()
+        hackerTime = datetime(2017, 12, 25) #2018, 3, 23, 17)
         diff = hackerTime - now
         testMessage = ''
 
@@ -72,6 +97,9 @@ async def on_message(message):
 #!test -A test command for the bot
     elif message.content.startswith('!test'):
         await client.send_message(message.channel, messages.Test)
+
+#run background task on start
+client.loop.create_task(background_announcments())
 
 #Run locally
 #client.run(secret.Token)
