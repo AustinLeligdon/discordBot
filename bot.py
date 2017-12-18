@@ -16,28 +16,27 @@ async def background_announcments():
     announcedTimes = []
 
     #Set the time for announcements in reverse order. Send announcement 30 min in advance
-    announcementTimes.append(datetime(2017, 12, 18, 17, 53)) # 11:00pm
-    announcementTimes.append(datetime(2017, 12, 18, 17, 50)) # 10:30pm
-    announcementTimes.append(datetime(2017, 12, 18, 17, 47)) # 10:15pm
-    announcementTimes.append(datetime(2017, 12, 18, 17, 43)) # 10:00pm
-    announcementTimes.append(datetime(2017, 12, 18, 17, 40)) # 9:30pm
+    announcementTimes.append(datetime(2017, 12, 19, 7, 0)) # 1:00am
+    announcementTimes.append(datetime(2017, 12, 19, 6, 0)) # 12:00am
+    announcementTimes.append(datetime(2017, 12, 19, 4, 0)) # 10:00pm
+    announcementTimes.append(datetime(2017, 12, 19, 3, 0)) # 9:00pm
+    announcementTimes.append(datetime(2017, 12, 19, 1, 30)) # 7:30pm
+    announcementTimes.append(datetime(2017, 12, 19, 1, 15)) # 7:15pm
+    announcementTimes.append(datetime(2017, 12, 19, 1, 0)) # 7:00pm
+    announcementTimes.append(datetime(2017, 12, 18, 23, 0)) # 5:00pm
     channel = discord.Object(id='390725705207513088') #announcment channel id
-    counter = 5
+    counter = 8 #number of announcements
     
     #as long as the bot is running
     while not client.is_closed:
-        #current time
-        checker = datetime.utcnow()
+        checker = datetime.utcnow() #current time
         for announce in announcementTimes:
             datePassed = announce < checker #true if the time has passed
-            if(datePassed):
-                #this announcement is the last one to occur, announce it if it hasn't been
-                if(announce not in announcedTimes):
-                    announcedTimes.append(announce)
-                    counter -= 1
-                    await client.send_message(channel, messages.announcements[counter])
-                break
-        await asyncio.sleep(180) #check every 30 minutes
+            if(datePassed and announce not in announcedTimes): #last announcement to occur, announce it if it hasn't been
+                announcedTimes.append(announce)
+                counter -= 1
+                await client.send_message(channel, messages.announcements[counter])
+        await asyncio.sleep(1800) #check every 30 minutes
         
 
 #Log the bot into the Discord channel. On success the bot will show as online
@@ -68,14 +67,10 @@ async def on_message(message):
         diff = hackerTime - now
         testMessage = ''
 
-        #Print hours to go if it's the same day
-        if(diff.days == 0):
-            hours = divmod(diff.seconds, 3600)[0]
-            timeMessage = 'There are {} hours until Christmas!'.format(hours)
-        #IF the event has passed
-        elif(diff.days < 0):
+        #If the event has passed
+        if(diff.days < 0):
             timeMessage = 'It\'s happening!'
-        #Print number of days to go if appropriate
+        #Print number of days to go
         else:
             timeMessage = 'There are {} days until Christmas!'.format(diff.days)
 
