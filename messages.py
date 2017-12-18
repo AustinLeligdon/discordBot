@@ -34,5 +34,5 @@ announcements.append('Python workshop at 10:00pm in the north conference room, f
 announcements.append('Dinner will be served at 9:00pm. Come by and fuel up with some delicious tacos!')
 announcements.append('Pre-dinner will be served at 7:30pm. Feast on with your fellow hackers.')
 announcements.append('Beginners workshop starts at 7:15pm. Come on by and learn the basics.')
-announcements.append('Coding begins at 7:00pm. Don\'t start until then!!)
+announcements.append('Coding begins at 7:00pm. Don\'t start until then!!')
 announcements.append('Opening ceremonies are at 5:00pm in the main hall. Come early and get a seat!')
