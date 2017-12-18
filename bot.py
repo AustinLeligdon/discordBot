@@ -16,11 +16,11 @@ async def background_announcments():
     announcedTimes = []
 
     #Set the time for announcements in reverse order. Send announcement 30 min in advance
-    announcementTimes.append(datetime(2017, 12, 18, 4, 30)) #14th, 10:30pm
-    announcementTimes.append(datetime(2017, 12, 18, 4)) #14th, 10:00pm
-    announcementTimes.append(datetime(2017, 12, 18, 3, 45)) #14th, 9:45pm
-    announcementTimes.append(datetime(2017, 12, 18, 3, 30)) #14th, 9:30pm
-    announcementTimes.append(datetime(2017, 12, 18, 3)) #14th, 9:00pm
+    announcementTimes.append(datetime(2017, 12, 18, 5)) # 11:00pm
+    announcementTimes.append(datetime(2017, 12, 18, 4, 30)) # 10:30pm
+    announcementTimes.append(datetime(2017, 12, 18, 4, 15)) # 10:15pm
+    announcementTimes.append(datetime(2017, 12, 18, 4)) # 10:00pm
+    announcementTimes.append(datetime(2017, 12, 18, 3, 30)) # 9:30pm
     channel = discord.Object(id='390725705207513088') #announcment channel id
     
     #as long as the bot is running
@@ -32,7 +32,7 @@ async def background_announcments():
             datePassed = announce < checker #true if the time has passed
             if(datePassed):
                 #this announcement is the last one to occur, announce it if it hasn't been
-                if(announce not in announced):
+                if(announce not in announcedTimes):
                     announcedTimes.append(announce)
                     counter -= 1
                     await client.send_message(channel, messages.announcements[counter])
