@@ -16,11 +16,11 @@ async def background_announcments():
     announcedTimes = []
 
     #Set the time for announcements in reverse order. Send announcement 30 min in advance
+    announcementTimes.append(datetime(2017, 12, 18, 4, 30)) #14th, 10:30pm
+    announcementTimes.append(datetime(2017, 12, 18, 4)) #14th, 10:00pm
+    announcementTimes.append(datetime(2017, 12, 18, 3, 45)) #14th, 9:45pm
     announcementTimes.append(datetime(2017, 12, 18, 3, 30)) #14th, 9:30pm
     announcementTimes.append(datetime(2017, 12, 18, 3)) #14th, 9:00pm
-    announcementTimes.append(datetime(2017, 12, 18, 2, 45)) #14th, 8:45pm
-    announcementTimes.append(datetime(2017, 12, 18, 2, 30)) #14th, 8:30pm
-    announcementTimes.append(datetime(2017, 12, 18, 2)) #14th, 8:00pm
     channel = discord.Object(id='390725705207513088') #announcment channel id
     
     #as long as the bot is running
@@ -105,10 +105,10 @@ async def on_message(message):
         await client.send_message(message.channel, messages.Test)
 
 #run background task on start
-#client.loop.create_task(background_announcments())
+client.loop.create_task(background_announcments())
 
 #Run locally
-client.run(secret.Token)
+#client.run(secret.Token)
 
 #Run on Heroku. Defined under Settings->Config Vars
 client.run(environ.get('BOT_TOKEN'))

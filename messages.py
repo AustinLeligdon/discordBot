@@ -28,8 +28,8 @@ Social = ''\
 
 #Announcments
 announcements = []
-announcements.append('Last: The closing ceremonies will occur at 10pm.')
-announcements.append('Dinner is at 9:30pm in the kitchen. Don\'t be late!')
-announcements.append('Flower exchage is taking place in the market at 9:15pm.')
-announcements.append('Docker workshop round 2 in the north conference room. Starting at 9:00pm')
-announcements.append('Opening ceremonies are at 8:30pm in the main hall. Come early and get a seat!')
+announcements.append('Last: The closing ceremonies will occur at 11pm.')
+announcements.append('Dinner is at 10:30pm in the kitchen. Don\'t be late!')
+announcements.append('Flower exchage is taking place in the market at 10:15pm.')
+announcements.append('Docker workshop round 2 in the north conference room. Starting at 10:00pm')
+announcements.append('Opening ceremonies are at 9:30pm in the main hall. Come early and get a seat!')
