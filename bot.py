@@ -16,11 +16,11 @@ async def background_announcments():
     announcedTimes = []
 
     #Set the time for announcements in reverse order. Send announcement 30 min in advance
-    announcementTimes.append(datetime(2017, 12, 18, 17, 47)) # 11:00pm
-    announcementTimes.append(datetime(2017, 12, 18, 17, 44)) # 10:30pm
-    announcementTimes.append(datetime(2017, 12, 18, 17, 41)) # 10:15pm
-    announcementTimes.append(datetime(2017, 12, 18, 17, 38)) # 10:00pm
-    announcementTimes.append(datetime(2017, 12, 18, 17, 35)) # 9:30pm
+    announcementTimes.append(datetime(2017, 12, 18, 17, 53)) # 11:00pm
+    announcementTimes.append(datetime(2017, 12, 18, 17, 50)) # 10:30pm
+    announcementTimes.append(datetime(2017, 12, 18, 17, 47)) # 10:15pm
+    announcementTimes.append(datetime(2017, 12, 18, 17, 43)) # 10:00pm
+    announcementTimes.append(datetime(2017, 12, 18, 17, 40)) # 9:30pm
     channel = discord.Object(id='390725705207513088') #announcment channel id
     counter = 5
     
@@ -36,6 +36,7 @@ async def background_announcments():
                     announcedTimes.append(announce)
                     counter -= 1
                     await client.send_message(channel, messages.announcements[counter])
+                break
         await asyncio.sleep(180) #check every 30 minutes
         
 
