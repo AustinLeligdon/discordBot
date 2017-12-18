@@ -36,7 +36,7 @@ async def background_announcments():
                     announcedTimes.append(announce)
                     counter -= 1
                     await client.send_message(channel, messages.announcements[counter])
-        await asyncio.sleep(1800) #check every 30 minutes
+        await asyncio.sleep(180) #check every 30 minutes
         
 
 #Log the bot into the Discord channel. On success the bot will show as online
