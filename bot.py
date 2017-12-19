@@ -100,7 +100,7 @@ async def on_message(message):
         await client.send_message(message.channel, messages.Test)
 
 #run background task on start
-client.loop.create_task(background_announcments())
+#client.loop.create_task(background_announcments())
 
 #Run locally
 #client.run(secret.Token)
