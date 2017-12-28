@@ -13,6 +13,13 @@ counter = 5
 checker = datetime.utcnow()
 print(checker)
 for announce in announcementTimes:
+    
+
+
+
+
+
+
     #print(announce)
     datePassed = announce < checker #true if the time has passed
     #print(datePassed)

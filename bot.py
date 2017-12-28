@@ -28,7 +28,7 @@ async def background_announcments():
     counter = 8 #number of announcements
     
     #as long as the bot is running
-    while not client.is_closed:
+    while not client.is_closed and counter != 0:
         checker = datetime.utcnow() #current time
         for announce in announcementTimes:
             datePassed = announce < checker #true if the time has passed
@@ -36,7 +36,7 @@ async def background_announcments():
                 announcedTimes.append(announce)
                 counter -= 1
                 await client.send_message(channel, messages.announcements[counter])
-        await asyncio.sleep(1800) #check every 30 minutes
+        await asyncio.sleep(300) #check every 5 minutes
         
 
 #Log the bot into the Discord channel. On success the bot will show as online
@@ -100,7 +100,7 @@ async def on_message(message):
         await client.send_message(message.channel, messages.Test)
 
 #run background task on start
-client.loop.create_task(background_announcments())
+#client.loop.create_task(background_announcments())
 
 #Run locally
 #client.run(secret.Token)
