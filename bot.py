@@ -9,36 +9,6 @@ import requests
 
 client = discord.Client()
 
-#background task
-async def background_announcments():
-    await client.wait_until_ready()
-    announcementTimes = []
-    announcedTimes = []
-
-    #Set the time for announcements in reverse order. Send announcement 30 min in advance
-    announcementTimes.append(datetime(2017, 12, 19, 7, 0)) # 1:00am
-    announcementTimes.append(datetime(2017, 12, 19, 6, 0)) # 12:00am
-    announcementTimes.append(datetime(2017, 12, 19, 4, 0)) # 10:00pm
-    announcementTimes.append(datetime(2017, 12, 19, 3, 0)) # 9:00pm
-    announcementTimes.append(datetime(2017, 12, 19, 1, 30)) # 7:30pm
-    announcementTimes.append(datetime(2017, 12, 19, 1, 15)) # 7:15pm
-    announcementTimes.append(datetime(2017, 12, 19, 1, 0)) # 7:00pm
-    announcementTimes.append(datetime(2017, 12, 18, 23, 0)) # 5:00pm
-    channel = discord.Object(id='390725705207513088') #announcment channel id
-    counter = 8 #number of announcements
-    
-    #as long as the bot is running
-    while not client.is_closed and counter != 0:
-        checker = datetime.utcnow() #current time
-        for announce in announcementTimes:
-            datePassed = announce < checker #true if the time has passed
-            if(datePassed and announce not in announcedTimes): #last announcement to occur, announce it if it hasn't been
-                announcedTimes.append(announce)
-                counter -= 1
-                await client.send_message(channel, messages.announcements[counter])
-        await asyncio.sleep(300) #check every 5 minutes
-        
-
 #Log the bot into the Discord channel. On success the bot will show as online
 @client.event
 async def on_ready():
@@ -98,9 +68,6 @@ async def on_message(message):
 #!test -A test command for the bot
     elif message.content.startswith('!test'):
         await client.send_message(message.channel, messages.Test)
-
-#run background task on start
-#client.loop.create_task(background_announcments())
 
 #Run locally
 #client.run(secret.Token)
